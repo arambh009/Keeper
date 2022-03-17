@@ -1,0 +1,19 @@
+.logo{
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    margin-top: 10px;
+    img{
+        height:50px;
+    }
+    h2{
+         font-family: 'Kaushan Script', cursive;
+        font-size: 40px;
+        letter-spacing: 1px;
+        font-weight: 20px;
+
+        // -webkit-text-stroke: 0.1px black;
+        // -webkit-text-fill-color: red;//#ad7c73;// white;
+          color:black;
+    }
+}

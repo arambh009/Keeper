@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,IAAI,CAAA;EACA,OAAO,EAAE,IAAI;EACb,qBAAqB,EAAE,cAAa;EACpC,QAAQ,EAAC,IAAI;EACb,aAAa,EAAE,IAAI;CACtB",
+    "sources": [
+        "Notes.module.scss"
+    ],
+    "names": [],
+    "file": "Notes.module.css"
+}
