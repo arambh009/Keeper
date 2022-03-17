@@ -1,1 +1,41 @@
-/* No CSS *//*# sourceMappingURL=Navbar.module.css.map */
+.addButton {
+  outline: none;
+  background: -webkit-gradient(linear, right bottom, left top, from(#faf05d), to(#fdbd41));
+  background: linear-gradient(to top left, #faf05d, #fdbd41);
+  font-size: 2.5rem;
+  border: none;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  text-align: center;
+  font-size: 50px;
+  color: #e9696a;
+  margin-right: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.addBar {
+  position: relative;
+}
+
+.addButton:hover {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+/*# sourceMappingURL=Navbar.module.css.map */

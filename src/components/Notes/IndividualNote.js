@@ -3,11 +3,21 @@ import Card from '../UI/Card'
 import { BsPinAngle} from "react-icons/bs";
 import { BsPinAngleFill} from "react-icons/bs";
 import { MdDelete} from "react-icons/md";
+import { uiActions } from '../../store/ui-slice.js'
+import { useDispatch } from 'react-redux'
 import classes from './IndividualNotes.module.css'
 
 const bgcolor=['FFB2A6','EEEDDE','9ADCFF','E3CAA5','FFD365','FFBED8','C1F4C5','FF6464','BB9981','789395'];
 
 export default function IndividualNote(props) {
+  const dispatch=useDispatch();
+
+  const togglenNoteModalHandler=(e)=>{
+    e.preventDefault();
+    console.log('sdsdsd');
+    dispatch(uiActions.toggleNoteModal(props.id));
+  }
+
     const idx=props.index%10;
     
     const colour=bgcolor[idx];
@@ -17,7 +27,8 @@ export default function IndividualNote(props) {
     
   return (
     <Card backgroundcolor={'#'+colour} className={classes.card}>
-        <div className={classes.header}>
+      <div onClick={togglenNoteModalHandler}>
+      <div className={classes.header}>
           <h2 className={classes.title}>{title}</h2>
           {pinned===true?
             <div className={classes.buttons}>
@@ -44,6 +55,8 @@ export default function IndividualNote(props) {
         
         <h3 className={classes.tagline}>{tagline}</h3>
         <div className={classes.content}>{content}</div>
+      </div>
+        
     </Card>
   )
 }

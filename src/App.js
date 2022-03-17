@@ -1,16 +1,19 @@
 import classes from'./styles/App.module.css';
 import { useEffect,useState } from 'react';
+import {useSelector} from 'react-redux';
 import Navbar from './components/Navbar/Navbar';
 import Notes from './components/Notes/Notes';
 import LoadingSpinner from './components/UI/LoadingSpinner';
 import NotesModal from './components/Notes/NotesModal';
+import CreateNoteModal from './components/Notes/CreateNote';
 
 function App() {
-
+  const showModal= useSelector(state=>state.ui.noteModalIsVisible);
+  const showCreateModal= useSelector(state=>state.ui.createNoteModalIsVisible);
   const[notes,setNotes]=useState([]);
   const [isLoading,setIsLoading]=useState(true);
   const [httpError,setHttpError]=useState(null);
-  const [showModal,setShowModal]=useState(true);
+  
 
   useEffect(()=>{
     const fetchNotes=async()=>{
@@ -43,11 +46,13 @@ function App() {
       });
     
   },[]);
+
+  
   
   var display=<div className={classes.outer}>
-  <Navbar/>
-  <Notes notes={notes}/>
-</div>
+                <Navbar/>
+                <Notes notes={notes}/>
+              </div>
 
   if(isLoading){
     display=<LoadingSpinner/>
@@ -63,6 +68,7 @@ function App() {
     <>
     {display}
     {showModal&&<NotesModal/>}
+    {showCreateModal &&<CreateNoteModal/>}
     </>
   );
 }
