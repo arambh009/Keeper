@@ -1,14 +1,26 @@
-import './App.css';
+import classes from'./styles/App.module.css';
 import { useEffect,useState } from 'react';
 import Navbar from './components/Navbar/Navbar';
 import Notes from './components/Notes/Notes';
+import LoadingSpinner from './components/UI/LoadingSpinner';
+import NotesModal from './components/Notes/NotesModal';
 
 function App() {
+
   const[notes,setNotes]=useState([]);
+  const [isLoading,setIsLoading]=useState(true);
+  const [httpError,setHttpError]=useState(null);
+  const [showModal,setShowModal]=useState(true);
 
   useEffect(()=>{
     const fetchNotes=async()=>{
+      
+      setIsLoading(true);
       const response=await fetch('https://react-http-f1485-default-rtdb.firebaseio.com/notes.json');
+
+      if(!response.ok){
+        throw new Error('Something went wrong!');
+      }
       const responseData=await response.json();
       
       const loadedNotes=[];
@@ -22,61 +34,37 @@ function App() {
         })
       }
       setNotes(loadedNotes);
+      setIsLoading(false);
     }
-    fetchNotes();
+    
+      fetchNotes().catch((error)=>{
+        setIsLoading(false);
+        setHttpError(error.message);
+      });
+    
   },[]);
+  
+  var display=<div className={classes.outer}>
+  <Navbar/>
+  <Notes notes={notes}/>
+</div>
+
+  if(isLoading){
+    display=<LoadingSpinner/>
+  }
+  if(httpError){
+    display=<section>
+      <p>{httpError}</p>
+    </section>
+  }
 
   // console.log(DUMMY_DATA);
   return (
     <>
-      <Navbar/>
-      <Notes notes={notes}/>
+    {display}
+    {showModal&&<NotesModal/>}
     </>
   );
 }
 
 export default App;
-// const DUMMY_DATA=[
-//   {
-//     id:0,
-//     title:"Title 0",
-//     tagline:"tagline0",
-//     content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Enim sit amet venenatis urna cursus eget. Nibh tellus molestie nunc non. Donec enim diam vulputate ut. Convallis aenean et tortor at risus viverra adipiscing.",
-//     pinned:true
-//   },
-//   {
-//     id:1,
-//     title:"Title 1",
-//     tagline:"Some random tagline1",
-//     content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Enim sit amet venenatis urna cursus eget. Nibh tellus molestie nunc non. Donec enim diam vulputate ut. Convallis aenean et tortor at risus viverra adipiscing.",
-//     pinned:false
-//   },
-//   {
-//     id:2,
-//     title:"Title 2",
-//     tagline:"tagline2",
-//     content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Enim sit amet venenatis urna cursus eget. Nibh tellus molestie nunc non. Donec enim diam vulputate ut. Convallis aenean et tortor at risus viverra adipiscing.",
-//     pinned:true
-//   },
-//   {
-//     id:3,
-//     title:"Title 3",
-//     tagline:"tagline3",
-//     content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Enim sit amet venenatis urna cursus eget. Nibh tellus molestie nunc non. Donec enim diam vulputate ut. Convallis aenean et tortor at risus viverra adipiscing.",
-//     pinned:false
-//   },
-//   {
-//     id:4,
-//     pinned:false,
-//     title:"Title 4",
-//     tagline:"tagline4",
-//     content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Enim sit amet venenatis urna cursus eget. Nibh tellus molestie nunc non. Donec enim diam vulputate ut. Convallis aenean et tortor at risus viverra adipiscing.",
-//   },
-//   {
-//     id:5,
-//     title:"Title 5",
-//     tagline:"tagline5",
-//     content:"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Enim sit amet venenatis urna cursus eget. Nibh tellus molestie nunc non. Donec enim diam vulputate ut. Convallis aenean et tortor at risus viverra adipiscing.",
-//     pinned:false
-//   }
-// ]
