@@ -14,7 +14,7 @@ export default function Notes() {
 
 
   const  pageCount=Math.ceil(notesList.length/usersPerPage);
-  console.log(pageCount);
+  // console.log(pageCount);
 
   const changePage=({selected})=>{
     setPageNumber(selected);

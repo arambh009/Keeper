@@ -32,8 +32,8 @@ export const fetchNotesData = () => {
           pinned:notesData[key].pinned
         })
       }
-      const pinnedNotes=loadedNotes.filter((item) => item.pinned ==true);
-      const unpinnedNotes=loadedNotes.filter((item) => item.pinned == false);
+      const pinnedNotes=loadedNotes.filter((item) => item.pinned ===true);
+      const unpinnedNotes=loadedNotes.filter((item) => item.pinned === false);
       
       const finalNotes=[...pinnedNotes,...unpinnedNotes];
      

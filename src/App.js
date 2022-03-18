@@ -20,7 +20,7 @@ function App() {
   const showCreateModal= useSelector(state=>state.ui.createNoteModalIsVisible);
   const notification=useSelector(state=>state.ui.notification);
   const notesList = useSelector((state) => state.notes);
-  console.log(notification);
+  // console.log(notification);
 
   useEffect(() => {
     dispatch(fetchNotesData());
