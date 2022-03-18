@@ -41,14 +41,16 @@ const notesSlice = createSlice({
       const existingItem = state.items.find((item) => item.id === id);
       existingItem.pinned=!existingItem.pinned;
       state.changed=true;
+      const pinnedNotes=state.items.filter((item) => item.pinned ==true);
+      const unpinnedNotes=state.items.filter((item) => item.pinned == false);
+      
+      const finalNotes=[...pinnedNotes,...unpinnedNotes];
+      state.items=finalNotes;
     },
 
     removeItemFromNotesList(state, action) {
       const id = action.payload;
-      const existingItem = state.items.find((item) => item.id === id);
-     
       state.changed = true;
-      
       state.items = state.items.filter((item) => item.id !== id);
       
     },

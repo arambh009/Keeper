@@ -40,7 +40,7 @@ $textcolour:rgb(102, 92, 92);
     }
 }
 .outer{
-    // background-color: blue;
+   
     position: relative;
     height: 100%;
 }
@@ -52,18 +52,18 @@ $textcolour:rgb(102, 92, 92);
 
 .tagline{
     margin-top: 0.6rem;
-    color:$textcolour;// rgb(61, 50, 50);
+    color:$textcolour;
     height: 2rem;
-    // font-family:Verdana, Geneva, Tahoma, sans-serif;
+    
 }
 .content{
     margin-top: 0.5rem;
-    color:$textcolour;// rgb(102, 92, 92);
+    color:$textcolour;
     font-size: 18px;
     height: 10rem;
 }
 .pinnedIcon,.deleteIcon{
-    // position: absolute;
+    
     padding: 3px;
     top: 0;
     left:100px;

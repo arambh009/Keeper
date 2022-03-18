@@ -2,7 +2,7 @@ import React,{useRef,useState} from 'react'
 import Card from '../UI/Card'
 import classes from './NotesModal.module.css'
 import { uiActions } from '../../store/ui-slice.js'
-import { useDispatch ,useSelector} from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { notesActions } from '../../store/notes-slice'
 import { v4 as uuid } from 'uuid';
 
@@ -42,9 +42,6 @@ export default function CreateNote() {
   const onSubmitHandler=(e)=>{
     e.preventDefault();
     const enteredTitle=titleInputRef.current.value;
-    const enteredTagline=taglineInputRef.current.value;
-    const enteredContent=contentInputRef.current.value;
-
     const enteredTitleIsValid=!isEmpty(enteredTitle);
     setFormInputsValidity(enteredTitleIsValid);
     if(enteredTitleIsValid===false)return;

@@ -5,8 +5,8 @@ import { uiActions } from '../../store/ui-slice.js'
 import { useDispatch } from 'react-redux'
 import {useSelector} from 'react-redux';
 import { notesActions } from '../../store/notes-slice'
-
 const isEmpty=value=>value.trim()==='';
+
 export default function NotesModal() {
   const id_= useSelector(state=>state.ui.showNoteWithId);
   const items=useSelector(state=>state.notes.items);
@@ -23,8 +23,7 @@ export default function NotesModal() {
   const existingItem = items.find((item) => item.id === id_);
   
   const onCancelHandler=()=>{
-    // e.preventDefault();
-    // console.log('normal');
+
     dispatch(uiActions.toggleNoteModal());
     
   }
@@ -48,7 +47,7 @@ export default function NotesModal() {
       tagline:enteredTagline,
     }))
 
-
+    dispatch(uiActions.toggleNoteModal());
     
   }
   return (
@@ -64,7 +63,9 @@ export default function NotesModal() {
           
           <div className={classes.buttons}>
             <button onClick={onCancelHandler} className={classes.cancel}>Cancel</button>
-            <button onClick={onSubmitHandler} className={classes.save}>Save</button>
+            <button onClick={onSubmitHandler} className={classes.save}>
+              Save
+            </button>
           </div>
         </div>
       </Card>

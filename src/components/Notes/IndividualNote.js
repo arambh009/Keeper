@@ -29,8 +29,7 @@ export default function IndividualNote(props) {
 
     
   const pinHandler=(e)=>{
-    e.preventDefault();
-    // alert('pin')
+    
     dispatch(notesActions.updatePin(id));
 
   }

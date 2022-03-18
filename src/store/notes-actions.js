@@ -20,11 +20,13 @@ export const fetchNotesData = () => {
 
     try {
       const notesData = await fetchData();
-      // console.log(notesData);
-      const arr=[];
+       console.log(notesData.length);
+      
       // for()
       const loadedNotes=[];
+      
       for(const key in notesData){
+      if(!key)continue;
         loadedNotes.push({
           id:key,
           title:notesData[key].title,
@@ -33,9 +35,15 @@ export const fetchNotesData = () => {
           pinned:notesData[key].pinned
         })
       }
+      const pinnedNotes=loadedNotes.filter((item) => item.pinned ==true);
+      const unpinnedNotes=loadedNotes.filter((item) => item.pinned == false);
+      
+      const finalNotes=[...pinnedNotes,...unpinnedNotes];
+      console.log(finalNotes)
+
       dispatch(
         notesActions.replaceNotesList({
-          items: loadedNotes || [],
+          items: finalNotes || [],
         })
       );
     } catch (error) {

@@ -14,9 +14,8 @@
 .card{
     width:60%;
     height: 69%;
-    // border: 1px solid black;
     background-color: antiquewhite;
-    // background-color: red;
+    
 }
 .title{
     border: none;
@@ -73,7 +72,7 @@
         outline: none;
         background: none;
         padding: 10px 20px;
-        border: none;//3px solid #494c50;
+        border: none;
         width: 30%;
         
         border-radius: 25px;
@@ -82,8 +81,7 @@
         font-weight: 400;
         cursor: pointer;
         transition: all .1s ease;
-        background: #FF6464;//#142683;
-    }
+        background: #FF6464;    }
     .cancel:hover{
         color: black;
     }
@@ -91,7 +89,7 @@
         outline: none;
         background: none;
         padding: 10px 20px;
-        border: none;//3px solid #494c50;
+        border: none;
         width: 30%;
         
         border-radius: 25px;
@@ -100,7 +98,7 @@
         font-weight: 400;
         cursor: pointer;
         transition: all .1s ease;
-        background:#6d9463;// #FF6464;//#142683;
+        background:#6d9463;
     }
     .save:hover{
         color: black;
