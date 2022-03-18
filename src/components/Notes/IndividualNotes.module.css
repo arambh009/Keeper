@@ -1,7 +1,9 @@
 .buttons {
+  position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  right: 10px;
 }
 
 .card {
@@ -33,10 +35,23 @@
 
 .card:hover .unpinnedIcon {
   visibility: visible;
+  padding: 3px;
+  top: 0;
+  left: 100px;
+  z-index: 10;
 }
 
 .card:hover .deleteIcon {
   visibility: visible;
+  padding: 3px;
+  top: 0;
+  left: 100px;
+  z-index: 10;
+}
+
+.outer {
+  position: relative;
+  height: 100%;
 }
 
 .header {
@@ -49,18 +64,23 @@
 }
 
 .tagline {
-  margin-top: 0.5rem;
+  margin-top: 0.6rem;
   color: #665c5c;
+  height: 2rem;
 }
 
 .content {
   margin-top: 0.5rem;
   color: #665c5c;
   font-size: 18px;
+  height: 10rem;
 }
 
 .pinnedIcon, .deleteIcon {
   padding: 3px;
+  top: 0;
+  left: 100px;
+  z-index: 10;
 }
 
 .unpinnedIcon {

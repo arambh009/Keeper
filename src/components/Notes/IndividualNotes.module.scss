@@ -1,6 +1,8 @@
 $textcolour:rgb(102, 92, 92);
 .buttons{
+    position: absolute;
     display: flex;
+   right:10px;
 }
 .card{
     display: inline-block;
@@ -24,30 +26,50 @@ $textcolour:rgb(102, 92, 92);
     cursor: pointer;
     .unpinnedIcon{
         visibility: visible;
+        padding: 3px;
+        top: 0;
+        left:100px;
+        z-index: 10;
     }
     .deleteIcon{
         visibility: visible;
+        padding: 3px;
+        top: 0;
+        left:100px;
+        z-index: 10;
     }
 }
-
+.outer{
+    // background-color: blue;
+    position: relative;
+    height: 100%;
+}
 .header{
+    
     display: flex;
     justify-content: space-between;
 }
 
 .tagline{
-    margin-top: 0.5rem;
+    margin-top: 0.6rem;
     color:$textcolour;// rgb(61, 50, 50);
+    height: 2rem;
     // font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
 .content{
     margin-top: 0.5rem;
     color:$textcolour;// rgb(102, 92, 92);
     font-size: 18px;
+    height: 10rem;
 }
 .pinnedIcon,.deleteIcon{
+    // position: absolute;
     padding: 3px;
+    top: 0;
+    left:100px;
+    z-index: 10;
 }
+
 .unpinnedIcon{
     visibility: hidden;
     padding: 3px;

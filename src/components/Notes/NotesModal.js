@@ -4,6 +4,7 @@ import classes from './NotesModal.module.css'
 import { uiActions } from '../../store/ui-slice.js'
 import { useDispatch } from 'react-redux'
 import {useSelector} from 'react-redux';
+import { notesActions } from '../../store/notes-slice'
 
 const isEmpty=value=>value.trim()==='';
 export default function NotesModal() {
@@ -20,12 +21,10 @@ export default function NotesModal() {
 
  
   const existingItem = items.find((item) => item.id === id_);
-  console.log(
-    id_,existingItem,items.length
-  )
-  const onCancelHandler=(e)=>{
-    e.preventDefault();
-    console.log('normal');
+  
+  const onCancelHandler=()=>{
+    // e.preventDefault();
+    // console.log('normal');
     dispatch(uiActions.toggleNoteModal());
     
   }
@@ -39,17 +38,29 @@ export default function NotesModal() {
 
     const enteredTitleIsValid=!isEmpty(enteredTitle);
     setFormInputsValidity(enteredTitleIsValid);
+    
     if(enteredTitleIsValid===false)return;
+
+    dispatch(notesActions.updateNotesList({
+      id:id_,
+      title:enteredTitle,
+      content:enteredContent,
+      tagline:enteredTagline,
+    }))
+
+
     
   }
   return (
     <form className={classes.backdrop}>
       <Card className={classes.card}>
         <div className={classes.forms}>
-          <input className={classes.title} type='text' placeholder='Title' maxLength="50" ref={titleInputRef} value={existingItem.title}/>
+          <input className={classes.title} type='text' placeholder='Title' maxLength="20" ref={titleInputRef} defaultValue={existingItem.title}/>
           <p className={!formInputsValidity?classes.error:classes.noerror}>*title is required</p>
-          <input className={classes.tagline} type='text' placeholder='Tagline'maxLength="50" ref={taglineInputRef} value={existingItem.tagline}/>
-          <textarea className={classes.content} type='text' placeholder='Your content goes here...' maxLength="350" ref={contentInputRef} value={existingItem.content}/>
+
+          <input className={classes.tagline} type='text' placeholder='Tagline'maxLength="50" ref={taglineInputRef}defaultValue={existingItem.tagline}/>
+
+          <textarea className={classes.content} type='text' placeholder='Your content goes here...' maxLength="350" ref={contentInputRef} defaultValue={existingItem.content}/>
           
           <div className={classes.buttons}>
             <button onClick={onCancelHandler} className={classes.cancel}>Cancel</button>

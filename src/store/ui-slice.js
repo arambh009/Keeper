@@ -13,6 +13,7 @@ const uiSlice = createSlice({
     },
     toggleNoteModal(state,action) {
       state.noteModalIsVisible= !state.noteModalIsVisible;
+      // console.log(action.payload);
       state.showNoteWithId=action.payload;
     },
     showNotification(state, action) {

@@ -5,17 +5,24 @@ const notesSlice = createSlice({
     items: [],
     changed: false,
   },
+
   reducers: {
-    replaceCart(state, action) {
+
+    replaceNotesList(state, action) {
+      state.items = action.payload.items;
+      
+    },
+
+    updateNotesList(state, action) {
       const newItem = action.payload;
       const existingItem = state.items.find((item) => item.id === newItem.id);
       existingItem.title=newItem.title;
       existingItem.content=newItem.content;
       existingItem.tagline=newItem.tagline;
       state.changed = true;
-      
     },
-    addItemToCart(state, action) {
+
+    addItemToNotesList(state, action) {
       const newItem = action.payload;
       
       state.changed = true;
@@ -24,17 +31,25 @@ const notesSlice = createSlice({
           id: newItem.id,
           title: newItem.title,
           tagline: newItem.tagline,
+          pinned:false,
           content: newItem.content,
         });
       
     },
-    removeItemFromCart(state, action) {
+    updatePin(state,action){
+      const id=action.payload;
+      const existingItem = state.items.find((item) => item.id === id);
+      existingItem.pinned=!existingItem.pinned;
+      state.changed=true;
+    },
+
+    removeItemFromNotesList(state, action) {
       const id = action.payload;
       const existingItem = state.items.find((item) => item.id === id);
      
       state.changed = true;
       
-        state.items = state.items.filter((item) => item.id !== id);
+      state.items = state.items.filter((item) => item.id !== id);
       
     },
   },
