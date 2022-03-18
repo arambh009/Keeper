@@ -3,26 +3,23 @@ import { notesActions } from './notes-slice';
 
 export const fetchNotesData = () => {
   return async (dispatch) => {
-      console.log('fetching');
+    
 
     const fetchData = async () => {
       const response=await fetch('https://react-http-f1485-default-rtdb.firebaseio.com/notes.json');
-        // console.log(response);
-      
+       
         if (!response.ok) {
         throw new Error('Could not fetch data!');
       }
-    //  console.log(response,"sdsdsd")
+   
       const data = await response.json();
-      // console.log(data);
+   
       return data;
     };
 
     try {
       const notesData = await fetchData();
-       console.log(notesData.length);
-      
-      // for()
+     
       const loadedNotes=[];
       
       for(const key in notesData){
@@ -39,8 +36,7 @@ export const fetchNotesData = () => {
       const unpinnedNotes=loadedNotes.filter((item) => item.pinned == false);
       
       const finalNotes=[...pinnedNotes,...unpinnedNotes];
-      console.log(finalNotes)
-
+     
       dispatch(
         notesActions.replaceNotesList({
           items: finalNotes || [],
@@ -67,7 +63,7 @@ export const sendNotesData = (notes) => {
         message: 'Sending data!',
       })
     );
-      console.log(notes);
+   
     const sendRequest = async () => {
       const response = await fetch(
         'https://react-http-f1485-default-rtdb.firebaseio.com/.json',
