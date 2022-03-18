@@ -33,7 +33,7 @@ export default function CreateNote() {
  
 
   const onCancelHandler=(e)=>{
-    e.preventDefault();
+    
     console.log('create');
     dispatch(uiActions.toggleCreateNoteModal());
   }

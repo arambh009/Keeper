@@ -23,6 +23,7 @@
   transition-property: -webkit-box-shadow, -webkit-transform;
   transition-property: box-shadow, transform;
   transition-property: box-shadow, transform, -webkit-box-shadow, -webkit-transform;
+  overflow-wrap: break-word;
 }
 
 .card:hover {

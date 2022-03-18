@@ -34,6 +34,7 @@ export default function IndividualNote(props) {
 
   }
   
+  
   const idx=props.index%10;
   const colour=bgcolor[idx];  
     
@@ -69,7 +70,7 @@ export default function IndividualNote(props) {
         </div>
         
         <h3 className={classes.tagline}>{tagline}</h3>
-        <div className={classes.content}>{content.length>150?content.substring(1, 200)+'....':content}</div>
+        <div className={classes.content}>{content.length>180?content.substring(1, 180)+'....':content}</div>
        
       </div>
         
