@@ -13,6 +13,8 @@
 }
 
 .paginationBttns {
+  position: absolute;
+  bottom: 10px;
   width: 100%;
   list-style: none;
   display: -webkit-box;
@@ -61,6 +63,12 @@
   .div {
     -ms-grid-columns: (1fr)[1];
         grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .paginationBttns {
+    position: unset;
   }
 }
 /*# sourceMappingURL=Notes.module.css.map */

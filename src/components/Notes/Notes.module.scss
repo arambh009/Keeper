@@ -11,7 +11,8 @@
    
 }
 .paginationBttns{
-   
+    position: absolute;
+    bottom:10px;
     width: 100%;
     list-style: none;
     display: flex;
@@ -55,4 +56,10 @@
     .div{
         grid-template-columns: repeat(1,1fr);
     }
+}
+@media screen and (max-width:480px){
+  .paginationBttns{
+    position: unset;
+    
+  }
 }

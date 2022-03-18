@@ -14,10 +14,7 @@ export default function Navbar() {
     <div className={classes.nav}>
       <Logo/>
       <div className={classes.addBar} onClick={toggleCreateNoteModalHandler}>
-        <button
-          className={classes.addButton}
-         
-        >
+        <button className={classes.addButton}>
           +
         </button>
       
